@@ -16,6 +16,10 @@ def cleanup_contacts(contacts):
     unique_contacts = {}
 
     for contact in contacts:
+        # Обработка случаев, когда отсутствуют имя или отчество
+        if len(contact) < 7:
+            contact += (None,) * (7 - len(contact))  # Заполнение отсутствующих значений значением None
+
         last_name, first_name, surname, organization, position, phone, email = contact
 
         # Разделяем полное имя на фамилию, имя и отчество
