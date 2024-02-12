@@ -20,7 +20,7 @@ def cleanup_contacts(contacts):
         if len(contact) < 7:
             contact += (None,) * (7 - len(contact))  # Заполнение отсутствующих значений значением None
 
-        last_name, first_name, surname, organization, position, phone, email = contact
+        last_name, first_name, surname, organization, position, phone, email, *_ = contact  # Используется расширенное распаковывание для обработки дополнительных элементов
 
         # Разделяем полное имя на фамилию, имя и отчество
         name_parts = re.split(r'\s+', f'{last_name} {first_name} {surname}')
